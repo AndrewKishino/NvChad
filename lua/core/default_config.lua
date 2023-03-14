@@ -43,6 +43,10 @@ M.ui = {
 
   -- lazyload it when there are 1+ buffers
   tabufline = {
+<<<<<<< HEAD
+=======
+    show_numbers = false,
+>>>>>>> 72e5613 (add an option to disable tabufline)
     enabled = true,
     lazyload = true,
     overriden_modules = nil,
@@ -89,7 +93,7 @@ M.ui = {
 
 M.plugins = "" -- path i.e "custom.plugins" -> custom/plugins.lua only and not custom/plugins/init.lua!!!!
 
-M.lazy_nvim = {} -- config for lazy.nvim startup options
+M.lazy_nvim = require "plugins.configs.lazy_nvim" -- config for lazy.nvim startup options
 
 -- these are default mappings, check core.mappings for table structure
 M.mappings = {}
