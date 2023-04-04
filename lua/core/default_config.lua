@@ -15,8 +15,8 @@ M.ui = {
   hl_add = {},
   hl_override = {},
   changed_themes = {},
-  theme_toggle = { "onedark", "one_light" },
-  theme = "onedark", -- default theme
+  theme_toggle = { "catppuccin", "one_light" },
+  theme = "catppuccin", -- default theme
   transparency = false,
 
   -- cmp themeing
@@ -43,10 +43,7 @@ M.ui = {
 
   -- lazyload it when there are 1+ buffers
   tabufline = {
-<<<<<<< HEAD
-=======
     show_numbers = false,
->>>>>>> 72e5613 (add an option to disable tabufline)
     enabled = true,
     lazyload = true,
     overriden_modules = nil,

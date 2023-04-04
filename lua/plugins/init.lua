@@ -37,13 +37,9 @@ local default_plugins = {
 
   {
     "NvChad/nvim-colorizer.lua",
-<<<<<<< HEAD
-    init = require("core.utils").lazy_load "nvim-colorizer.lua",
-=======
     init = function()
       require("core.utils").lazy_load "nvim-colorizer.lua"
     end,
->>>>>>> 4d45597 (gitsign: handling file path with spaces)
     config = function(_, opts)
       require("colorizer").setup(opts)
 
@@ -82,24 +78,16 @@ local default_plugins = {
 
   {
     "nvim-treesitter/nvim-treesitter",
-<<<<<<< HEAD
-    init = require("core.utils").lazy_load "nvim-treesitter",
-=======
     init = function()
       require("core.utils").lazy_load "nvim-treesitter"
     end,
->>>>>>> 4d45597 (gitsign: handling file path with spaces)
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
     build = ":TSUpdate",
     opts = function()
       return require "plugins.configs.treesitter"
     end,
     config = function(_, opts)
-<<<<<<< HEAD
-      pcall(dofile, vim.g.base46_cache .. "syntax")
-=======
       dofile(vim.g.base46_cache .. "syntax")
->>>>>>> 4d45597 (gitsign: handling file path with spaces)
       require("nvim-treesitter.configs").setup(opts)
     end,
   },
@@ -113,11 +101,7 @@ local default_plugins = {
       vim.api.nvim_create_autocmd({ "BufRead" }, {
         group = vim.api.nvim_create_augroup("GitSignsLazyLoad", { clear = true }),
         callback = function()
-<<<<<<< HEAD
-          vim.fn.system("git -C " .. vim.fn.expand "%:p:h" .. " rev-parse")
-=======
           vim.fn.system("git -C " .. '"' .. vim.fn.expand "%:p:h" .. '"' .. " rev-parse")
->>>>>>> 4d45597 (gitsign: handling file path with spaces)
           if vim.v.shell_error == 0 then
             vim.api.nvim_del_augroup_by_name "GitSignsLazyLoad"
             vim.schedule(function()
@@ -151,23 +135,16 @@ local default_plugins = {
       vim.api.nvim_create_user_command("MasonInstallAll", function()
         vim.cmd("MasonInstall " .. table.concat(opts.ensure_installed, " "))
       end, {})
-<<<<<<< HEAD
-=======
 
       vim.g.mason_binaries_list = opts.ensure_installed
->>>>>>> 4d45597 (gitsign: handling file path with spaces)
     end,
   },
 
   {
     "neovim/nvim-lspconfig",
-<<<<<<< HEAD
-    init = require("core.utils").lazy_load "nvim-lspconfig",
-=======
     init = function()
       require("core.utils").lazy_load "nvim-lspconfig"
     end,
->>>>>>> 4d45597 (gitsign: handling file path with spaces)
     config = function()
       require "plugins.configs.lspconfig"
     end,
@@ -182,14 +159,9 @@ local default_plugins = {
         -- snippet plugin
         "L3MON4D3/LuaSnip",
         dependencies = "rafamadriz/friendly-snippets",
-<<<<<<< HEAD
-        config = function()
-          require("plugins.configs.others").luasnip()
-=======
         opts = { history = true, updateevents = "TextChanged,TextChangedI" },
         config = function(_, opts)
           require("plugins.configs.others").luasnip(opts)
->>>>>>> 4d45597 (gitsign: handling file path with spaces)
         end,
       },
 
@@ -230,13 +202,9 @@ local default_plugins = {
   {
     "numToStr/Comment.nvim",
     -- keys = { "gc", "gb" },
-<<<<<<< HEAD
-    init = require("core.utils").load_mappings "comment",
-=======
     init = function()
       require("core.utils").load_mappings "comment"
     end,
->>>>>>> 4d45597 (gitsign: handling file path with spaces)
     config = function()
       require("Comment").setup()
     end,
@@ -246,36 +214,25 @@ local default_plugins = {
   {
     "nvim-tree/nvim-tree.lua",
     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-<<<<<<< HEAD
-    init = require("core.utils").load_mappings "nvimtree",
-=======
     init = function()
       require("core.utils").load_mappings "nvimtree"
     end,
->>>>>>> 4d45597 (gitsign: handling file path with spaces)
     opts = function()
       return require "plugins.configs.nvimtree"
     end,
     config = function(_, opts)
       dofile(vim.g.base46_cache .. "nvimtree")
       require("nvim-tree").setup(opts)
-<<<<<<< HEAD
-=======
       vim.g.nvimtree_side = opts.view.side
->>>>>>> 4d45597 (gitsign: handling file path with spaces)
     end,
   },
 
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
-<<<<<<< HEAD
-    init = require("core.utils").load_mappings "telescope",
-=======
     init = function()
       require("core.utils").load_mappings "telescope"
     end,
->>>>>>> 4d45597 (gitsign: handling file path with spaces)
 
     opts = function()
       return require "plugins.configs.telescope"
@@ -297,13 +254,9 @@ local default_plugins = {
   {
     "folke/which-key.nvim",
     keys = { "<leader>", '"', "'", "`" },
-<<<<<<< HEAD
-    init = require("core.utils").load_mappings "whichkey",
-=======
     init = function()
       require("core.utils").load_mappings "whichkey"
     end,
->>>>>>> 4d45597 (gitsign: handling file path with spaces)
     opts = function()
       return require "plugins.configs.whichkey"
     end,
@@ -320,11 +273,4 @@ if #config.plugins > 0 then
   table.insert(default_plugins, { import = config.plugins })
 end
 
-<<<<<<< HEAD
--- lazy_nvim startup opts
-local lazy_config = vim.tbl_deep_extend("force", require "plugins.configs.lazy_nvim", config.lazy_nvim)
-
-require("lazy").setup(default_plugins, lazy_config)
-=======
 require("lazy").setup(default_plugins, config.lazy_nvim)
->>>>>>> 4d45597 (gitsign: handling file path with spaces)

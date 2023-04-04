@@ -329,10 +329,6 @@ M.nvterm = {
     },
 
     -- new
-<<<<<<< HEAD
-
-=======
->>>>>>> 4d45597 (gitsign: handling file path with spaces)
     ["<leader>h"] = {
       function()
         require("nvterm.terminal").new "horizontal"
